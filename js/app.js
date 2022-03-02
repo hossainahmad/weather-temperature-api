@@ -4,8 +4,10 @@ const API_KEY = `45bbbfc389cc3461410236ec7de9e8e6`;
 // Search a city and API Fetched
 
 const weatherSearch = () => {
-    const cityName = document.getElementById('city-name').value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`;
+    const cityName = document.getElementById('city-name');
+    const cityNameText = cityName.value;
+    cityName.value = '';
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameText}&appid=${API_KEY}&units=metric`;
     fetch(url)
     .then(res => res.json())
     .then(data => showWeather(data))
@@ -18,7 +20,7 @@ const setInnerText = (id, text) =>{
 // Show Weather Function 
 
 const showWeather = temperature => {
-    setInnerText('city', temperature.name);
+    setInnerText('city', temperature.name ? temperature.name: 'Weather Not Found');
     setInnerText('temp', temperature.main.temp);
     setInnerText('temp-condition', temperature.weather[0].main)
 
