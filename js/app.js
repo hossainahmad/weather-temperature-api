@@ -22,6 +22,9 @@ const showWeather = temperature => {
     setInnerText('temp', temperature.main.temp);
     setInnerText('temp-condition', temperature.weather[0].main)
 
-// Set Weather Condition Name   
-    
+// Set Weather Condition Name
+
+    const url = `http://openweathermap.org/img/wn/${temperature.weather[0].icon}@2x.png`;
+    const imgIcon = document.getElementById('weather-icon');
+    imgIcon.setAttribute('src', url);
 }
